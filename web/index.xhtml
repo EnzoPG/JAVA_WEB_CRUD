@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Java - Web</title>
+    </h:head>
+    <h:body>
+        <h:form>
+           
+        <p:fieldset legend="Cadastro Simples - Inserindo Dados">
+            <p:panelGrid columns="2">
+               <p:outputLabel value="Modelo "></p:outputLabel>
+               <p:inputText value="#{productsBean.product.modelo}"></p:inputText>
+                
+                <p:outputLabel value="Fabricante "></p:outputLabel>
+                <p:inputText value="#{productsBean.product.fabricante}"></p:inputText>
+                
+                <p:outputLabel value="Memoria "></p:outputLabel>
+                <p:inputText value="#{productsBean.product.memoria}"></p:inputText>
+                
+                <p:outputLabel value="Quantidade "></p:outputLabel>
+                <p:inputText value="#{productsBean.product.quantidade}"></p:inputText>
+            </p:panelGrid>
+           
+             
+            <p><p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Adicionar" action="#{productsBean.adicionar()}" update="@form"></p:commandButton>
+                    <p:commandButton value="Buscar Itens" action="#{productsBean.listar()}" update="@form"></p:commandButton>
+                </p:toolbarGroup>
+            </p:toolbar>
+            </p>
+            <p><p:messages autoUpdate="true" showDetail="true"></p:messages></p>
+            
+                
+            
+            <p:dataTable value="#{productsBean.products}" var="products">
+                <p:column>
+                    <center><p:commandButton value="Editar Dados" action="#{productsBean.editar(products)}" update="@form"></p:commandButton></center>
+                </p:column>
+                <p:column>
+                    <center><p:commandButton value="Excluir Produto" action="#{productsBean.deletar(products)}" update="@form"></p:commandButton></center>
+                </p:column>
+                    <p:column headerText="Modelo">
+                        <center><h:outputText value="#{products.modelo}"></h:outputText></center>
+                    </p:column>
+                    <p:column headerText="Fabricante">
+                        <center><h:outputText value="#{products.fabricante}"></h:outputText></center>
+                    </p:column>
+                    <p:column headerText="Memoria">
+                        <center><h:outputText value="#{products.memoria}"></h:outputText></center>
+                    </p:column>
+                    <p:column headerText="Quantidade">
+                        <center><h:outputText value="#{products.quantidade}"></h:outputText></center>
+                    </p:column>
+                </p:dataTable>   
+        </p:fieldset>
+           
+        </h:form>
+        
+    </h:body>
+</html>
+
